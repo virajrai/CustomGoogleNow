@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RITW.HelloWorld/ViewController.swift"
+            timestampString = "507694183.134065"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "retrieveData(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RITW_HelloWorld.ViewController.retrieveData (Any) -&gt; ()"
+                  moduleName = "RITW.HelloWorld"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xindongzhang/Desktop/RITW/New/RITW.HelloWorld/RITW.HelloWorld/ViewController.swift"
+                  timestampString = "507694829.985836"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RITW_HelloWorld.ViewController.retrieveData (Any) -&gt; ()"
+                  moduleName = "RITW.HelloWorld"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/xindongzhang/Desktop/RITW/New/RITW.HelloWorld/RITW.HelloWorld/ViewController.swift"
+                  timestampString = "507694829.988237"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "756">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
