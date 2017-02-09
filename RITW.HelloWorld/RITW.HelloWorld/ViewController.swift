@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,11 +22,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func retrieveData(_ sender: Any) {
-        let userDefaults = UserDefaults(suiteName: "group.com.RITW")
-        if let testUserId = userDefaults?.object(forKey: "userId") as? String {
-            print("User Id: \(testUserId)")
-        }
-        
+//        let userDefaults = UserDefaults(suiteName: "group.com.RITW")
+//        if let testUserId = userDefaults?.object(forKey: "userId") as? String {
+//            print("User Id: \(testUserId)")
+//        }
+        let firstmessage = UserDefaults(suiteName: "group.com.RITW")!.bool(forKey: "FirstLaunch")
+        print("message we got: \(firstmessage)")
     }
 
 }
