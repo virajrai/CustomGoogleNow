@@ -8,16 +8,72 @@
 
 import UIKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        // When you type customSchemeExample://red in the search bar in Safari
+        let urlScheme = url.scheme //[URL_scheme]
+        let host = url.host //red
+        
+        // When you type customSchemeExample://?backgroundColor=red or customSchemeExample://?backgroundColor=green
+        
+        let urlComponents = NSURLComponents(url: url, resolvingAgainstBaseURL: false)
+        
+        if let haha = urlComponents?.queryItems{
+            let items = (haha) as [NSURLQueryItem] // {name = backgroundcolor, value = red}
+            
+            if (url.scheme == "openapptest"){
+                NSLog("Inn")
+                var color: UIColor? = nil
+                var vcTitle = ""
+                if let _ = items.first, let propertyName = items.first?.name, let propertyValue = items.first?.value{
+                    NSLog("Name " + propertyName)
+                    NSLog("Value " + propertyValue)
+                    
+                    vcTitle = propertyName
+                    if (propertyValue=="red"){
+                        color = .red
+                    }
+                    else if (propertyValue=="green"){
+                        color = .green
+                    }
+                    
+                    if (color != nil) {
+                        let vc = UIViewController()
+                        vc.view.backgroundColor = color
+                        vc.title = vcTitle
+                        let navController = UINavigationController(rootViewController: vc)
+                        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismiss))
+                        vc.navigationItem.leftBarButtonItem = barButtonItem
+                        self.window?.rootViewController?.present(navController, animated: true, completion: nil)
+                        return true
+                    }                
+                }
+            }
+        }
+        if let haha = host{
+            NSLog("Host" + host!)
+        }
+        
+        
+        return false
+    }
+    
+    func dismiss() {
+        self.window?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
+    
+    
     
     private func application(app: UIApplication, openURL url: URL, options: [String : AnyObject]) -> Bool {
         
@@ -67,4 +123,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
