@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -36,13 +36,203 @@
                                     <action selector="retrieveData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lg2-2l-9ks"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7k-Zr-c3r" userLabel="callButton">
+                                <rect key="frame" x="140" y="318" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Call Someone"/>
+                                <connections>
+                                    <action selector="callButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fjb-RQ-Cua"/>
+                                    <segue destination="O9X-NF-03y" kind="show" id="rZn-xd-aeg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUK-Bn-wJX" userLabel="call2">
+                                <rect key="frame" x="170" y="370" width="39" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Call 2"/>
+                                <connections>
+                                    <segue destination="QU7-8B-Fep" kind="show" id="JL4-Qn-UtO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7w-Wg-MFf" userLabel="call2">
+                                <rect key="frame" x="175" y="389" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Test"/>
+                                <connections>
+                                    <segue destination="Jg8-gb-h8W" kind="show" id="d5Z-sN-BZr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
+            <point key="canvasLocation" x="-1825" y="-439"/>
+        </scene>
+        <!--callViewController-->
+        <scene sceneID="Wll-Bd-HR5">
+            <objects>
+                <viewController id="O9X-NF-03y" userLabel="callViewController" customClass="callViewController" customModule="RITW_HelloWorld" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="t2J-Rx-iTt"/>
+                        <viewControllerLayoutGuide type="bottom" id="DIk-TZ-prM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TJD-Ew-kz3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Call 1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="faH-OR-tv5">
+                                <rect key="frame" x="118" y="280" width="138" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLV-g5-TPA" userLabel="callButton">
+                                <rect key="frame" x="170" y="379" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="QU7-8B-Fep" eventType="touchUpInside" id="5CK-Nh-FMT"/>
+                                    <action selector="backButton:" destination="O9X-NF-03y" eventType="touchUpInside" id="SY3-xq-coN"/>
+                                    <action selector="callButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ahO-9u-afl"/>
+                                    <action selector="mic_tapped:" destination="QU7-8B-Fep" eventType="touchUpInside" id="LCo-eS-Qac"/>
+                                    <action selector="microphoneTapped:" destination="QU7-8B-Fep" eventType="touchUpInside" id="5fS-9A-ZiG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRe-f7-jM7" userLabel="callButton">
+                                <rect key="frame" x="160" y="401" width="54" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Tap Mic"/>
+                                <connections>
+                                    <action selector="backButton:" destination="O9X-NF-03y" eventType="touchUpInside" id="Ej8-N6-YtU"/>
+                                    <action selector="backButton:" destination="QU7-8B-Fep" eventType="touchUpInside" id="ppM-iT-vLf"/>
+                                    <action selector="callButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aid-lb-HKa"/>
+                                    <action selector="mic_tapped:" destination="QU7-8B-Fep" eventType="touchUpInside" id="QkG-19-1g1"/>
+                                    <action selector="microphoneTapped:" destination="QU7-8B-Fep" eventType="touchUpInside" id="jwh-Ad-Qvp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="faH-OR-tv5" id="Qy9-HC-ptU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I15-Od-HiF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-649" y="-642"/>
+        </scene>
+        <!--call2ViewController-->
+        <scene sceneID="dsl-fW-XAx">
+            <objects>
+                <viewController id="QU7-8B-Fep" userLabel="call2ViewController" customClass="call2ViewController" customModule="RITW_HelloWorld" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jvf-EA-P0q"/>
+                        <viewControllerLayoutGuide type="bottom" id="4g7-1p-lNj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="03g-Ev-fp6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Call 2" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y0s-1z-zPh">
+                                <rect key="frame" x="118" y="280" width="138" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ykp-XX-fzn" userLabel="callButton">
+                                <rect key="frame" x="161" y="345" width="54" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Tap Mic"/>
+                                <connections>
+                                    <action selector="callButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nHp-EC-VtT"/>
+                                    <action selector="mic_tapped:" destination="QU7-8B-Fep" eventType="touchUpInside" id="WQh-5r-rYD"/>
+                                    <action selector="microphoneTapped:" destination="QU7-8B-Fep" eventType="touchUpInside" id="JDI-oQ-Tan"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HoO-H3-xex" userLabel="callButton">
+                                <rect key="frame" x="171" y="383" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="QU7-8B-Fep" eventType="touchUpInside" id="FdF-AO-BCR"/>
+                                    <action selector="callButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ts2-xw-0UE"/>
+                                    <action selector="mic_tapped:" destination="QU7-8B-Fep" eventType="touchUpInside" id="beB-EI-cgJ"/>
+                                    <action selector="microphoneTapped:" destination="QU7-8B-Fep" eventType="touchUpInside" id="LWf-SN-0S8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="y0s-1z-zPh" id="pMk-PD-LwK"/>
+                        <outlet property="micButton" destination="ykp-XX-fzn" id="jXC-ZT-keH"/>
+                        <outlet property="microphoneButton" destination="ykp-XX-fzn" id="tKo-3f-bbY"/>
+                        <outlet property="textView" destination="y0s-1z-zPh" id="LaR-je-wau"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aac-Fe-zQI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-650" y="0.0"/>
+        </scene>
+        <!--callViewController-->
+        <scene sceneID="Kvh-Ax-Toe">
+            <objects>
+                <viewController id="Jg8-gb-h8W" userLabel="callViewController" customClass="testViewController" customModule="RITW_HelloWorld" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y5t-9c-n5q"/>
+                        <viewControllerLayoutGuide type="bottom" id="c8W-8f-ZeZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pNd-qw-R3o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ue-Uy-kAH" userLabel="callButton">
+                                <rect key="frame" x="188" y="349" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backButton:" destination="QU7-8B-Fep" eventType="touchUpInside" id="7Dw-Sa-5zC"/>
+                                    <action selector="backButton:" destination="O9X-NF-03y" eventType="touchUpInside" id="fHg-9G-XGu"/>
+                                    <action selector="backButtonn:" destination="Jg8-gb-h8W" eventType="touchUpInside" id="PlF-dX-tQ8"/>
+                                    <action selector="callButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3GT-5l-PxA"/>
+                                    <action selector="mic_tapped:" destination="QU7-8B-Fep" eventType="touchUpInside" id="GdS-cn-vkk"/>
+                                    <action selector="microphoneTapped:" destination="QU7-8B-Fep" eventType="touchUpInside" id="nSg-6n-D5G"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjh-bY-y9x" userLabel="micTapped">
+                                <rect key="frame" x="130" y="368" width="151" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Tap Mic"/>
+                                <connections>
+                                    <action selector="microphoneTapped:" destination="Jg8-gb-h8W" eventType="touchUpInside" id="kTx-6a-IgX"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Test" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qYO-sm-2l6">
+                                <rect key="frame" x="9" y="212" width="350" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editEnded:" destination="Jg8-gb-h8W" eventType="editingDidEnd" id="ciL-i4-Iyv"/>
+                                    <action selector="startEdit:" destination="Jg8-gb-h8W" eventType="editingDidBegin" id="cau-Ih-QT0"/>
+                                    <action selector="valueChanged:" destination="Jg8-gb-h8W" eventType="valueChanged" id="paH-xV-XZm"/>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="microphoneButton" destination="Tjh-bY-y9x" id="Al5-Ya-Ksp"/>
+                        <outlet property="textView" destination="qYO-sm-2l6" id="UYa-bt-NXQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JJX-a6-Zen" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1327.2" y="-1179.7601199400301"/>
         </scene>
     </scenes>
 </document>
