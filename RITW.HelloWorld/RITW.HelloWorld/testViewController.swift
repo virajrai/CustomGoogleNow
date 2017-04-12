@@ -46,11 +46,15 @@ class testViewController: UIViewController,SFSpeechRecognizerDelegate,MFMessageC
             
             else{
                 print(text ?? "text NULL")
-                google(name: text,weather: true)
+                do{
+                    try google(name: text,weather: true)
+                } catch{
+                    
+                }
             }
 
 
-            
+            startRecording()
             
         } else {
             startRecording()
@@ -67,14 +71,13 @@ class testViewController: UIViewController,SFSpeechRecognizerDelegate,MFMessageC
     
 */
     
-    func google(name:String!,weather:Bool){
+    func google(name:String!,weather:Bool) throws{
         
         // Read textValue user inputs into userNameValue variable
         
         var array = name?.characters.split{$0 == " "}.map(String.init)
         let userNameValue = array!.joined(separator: "+")
         
-        print(userNameValue)
         // Check of userNameValue is not empty
         if (userNameValue.isEmpty)
         {
@@ -87,7 +90,6 @@ class testViewController: UIViewController,SFSpeechRecognizerDelegate,MFMessageC
         let urlWithParams = scriptUrl + "search?q=\(userNameValue.lowercased())"
         // Create NSURL Ibject
         let myUrl = NSURL(string: urlWithParams);
-        print(urlWithParams)
         // Creaste URL Request
         let request = NSMutableURLRequest(url:myUrl! as URL);
         
@@ -127,37 +129,33 @@ class testViewController: UIViewController,SFSpeechRecognizerDelegate,MFMessageC
             //print("responseString = \(responseString)")
             
             
-            if name.range(of: "weather") != nil {
+            if (name.range(of: "weather") != nil || name.range(of: "Weather") != nil) {
                 
-                print("entered if")
-                
-                
+            
+                let today = Calendar.current.component(.weekday, from: Date())
+  
+                let day_list = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
                 let list = ["Mostly Cloudy", "Cloudy", "Smoke", "Haze", "Mostly Sunny", "Partly Cloudy", "Scattered Thunderstorms", "Scattered Showers", "Showers", "Rain", "Sunny","Clear with periodic clouds"]
-                print("list set")
-                var day = (responseString?.range(of: "Monday").toRange()?.lowerBound)
+                
+                var day = (responseString?.range(of: day_list[today-1]).toRange()?.lowerBound)
                 
                 if day == -1{
                     day=0
                 }
 
-                print("day is set")
-                
-                print(responseString?.range(of: "Sunny").toRange()?.lowerBound)
+              
                 
                 var index_list=[1000000000]
                 var weather_type = ["failure"]
-                print("array initialized")
                 for typeWeather in list{
-                    print(typeWeather)
                     let index = responseString?.range(of: typeWeather).toRange()?.lowerBound
-                    print(index)
+                    
                     if index != nil{
                         index_list.append(index!)
                         weather_type.append(typeWeather)
                     }
                 }
                 
-                print("arrays populted")
                 
                 var min_index = 0
                 let len = index_list.count
@@ -168,7 +166,7 @@ class testViewController: UIViewController,SFSpeechRecognizerDelegate,MFMessageC
                     }
                 }
                 
-                print("min index found")
+                
                 
                 print(weather_type[min_index])
                 
@@ -177,18 +175,22 @@ class testViewController: UIViewController,SFSpeechRecognizerDelegate,MFMessageC
             
             }
             
-            if true{
-                
-                print("entered if")
+            else{
+               
                 
                 let teamName = array?[0]
-                print("Teamname" + teamName!)
                 let stri = "[(][0123456789]+-[0123456789]+[)]"
                 let stringResp = responseString as! String
-                let game_done = responseString?.range(of: "Final").toRange()?.lowerBound
+                var game_done = responseString?.range(of: "Final").toRange()?.lowerBound
+                if (game_done == nil){
+                    game_done = responseString?.range(of: "Live").toRange()?.lowerBound
+                }
                
                 let team_index = responseString?.range(of: teamName!).toRange()?.lowerBound
+                
                 let hyphen = responseString?.substring(to: game_done!).substring(from: stringResp.index(stringResp.startIndex, offsetBy: team_index!)).range(of: " - ")?.lowerBound
+                
+                
                 //print(responseString?.substring(to: game_done!).substring(from: stringResp.index(stringResp.startIndex, offsetBy: team_index!)))
                 if (hyphen == nil){
                     var temp = stringResp.range(of: stri,options: .regularExpression)
@@ -225,11 +227,20 @@ class testViewController: UIViewController,SFSpeechRecognizerDelegate,MFMessageC
                         teamSecond = true
                     }
                     
-                    print(first_info)
-                    print(first_score)
-                    print(second_score)
-                    print(teamSecond)
-                    print("insdie fi")
+                    
+                    var first_won = (Int(first_score)! > Int(second_score)!) ? true : false
+                    var result = ""
+                    if (first_won && teamSecond || !(first_won || teamSecond)){
+                        result = "lost"
+                    }else{
+                        result = "won"
+                    }
+                    
+                    var diff = Int(first_score)! - Int(second_score)!
+                   
+                    
+                    
+                    print(teamName ?? "", " " ,result, "by " ,((first_won) ?diff : diff * -1 ), "points.")
  
                 } else{
                     let scoreRange = stringResp.range(of: "[0-9]+ - [0-9]+",options: .regularExpression)
@@ -238,37 +249,34 @@ class testViewController: UIViewController,SFSpeechRecognizerDelegate,MFMessageC
                     let first_score = scores.substring(with: firstScoreRange!)
                     let secondScoreRange = scores.substring(from: (firstScoreRange?.upperBound)!).range(of: "[0-9]+",options: .regularExpression)
                     let second_score = scores.substring(from: (firstScoreRange?.upperBound)!).substring(with: secondScoreRange!)
-                    print(first_score)
-                    print(second_score)
+                    
                     let score_index = scoreRange?.lowerBound
                     var teamListedSecond = false
                     if (stringResp.substring(to: score_index!).range(of: teamName!) != nil){
                         teamListedSecond = true
                     }
-                    print(teamListedSecond)
+                    let teamSecond = teamListedSecond
+                    
+                    var first_won = (Int(first_score)! > Int(second_score)!) ? true : false
+                    var result = ""
+                    if (first_won && teamSecond || !(first_won || teamSecond)){
+                        result = "lost"
+                    }else{
+                        result = "won"
+                    }
+                    
+                    var diff = Int(first_score)! - Int(second_score)!
+                    
+                    
+                    
+                    print(teamName ?? "", " " ,result, "by " ,((first_won) ?diff : diff * -1 ), "points.")
                     
                 }
                 
                 
             }
             
-            /*
-            // Convert server json response to NSDictionary
-            do {
-                if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data!, options: []) as? NSDictionary {
-                    
-                    // Print out dictionary
-                    print(convertedJsonIntoDict)
-                    
-                    // Get value by key
-                    let firstNameValue = convertedJsonIntoDict["userName"] as? String
-                    print(firstNameValue!)
-                    
-                }
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
- */
+            
             
         }
         
