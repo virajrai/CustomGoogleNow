@@ -46,15 +46,12 @@ class testViewController: UIViewController,SFSpeechRecognizerDelegate,MFMessageC
             
             else{
                 print(text ?? "text NULL")
-                do{
-                    try google(name: text,weather: true)
-                } catch{
-                    
-                }
+                
+                google(name: text,weather: true)
+                
             }
 
 
-            startRecording()
             
         } else {
             startRecording()
@@ -71,7 +68,7 @@ class testViewController: UIViewController,SFSpeechRecognizerDelegate,MFMessageC
     
 */
     
-    func google(name:String!,weather:Bool) throws{
+    func google(name:String!,weather:Bool) {
         
         // Read textValue user inputs into userNameValue variable
         
@@ -355,6 +352,11 @@ class testViewController: UIViewController,SFSpeechRecognizerDelegate,MFMessageC
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        UserDefaults(suiteName: "group.com.RITW")!.set(true, forKey: "SmackProductivityActivated")
+        UserDefaults(suiteName: "group.com.RITW")!.set("https://www.freeiconspng.com/uploads/gas-station-icon--0.png", forKey: "SmackProductivityiconURL")
+        UserDefaults(suiteName: "group.com.RITW")!.set("SmackProductivity", forKey: "SmackProductivityappName")
+        UserDefaults(suiteName: "group.com.RITW")!.set("SmackProductivity://",forKey:"SmackProductivityappURL")
+        
         // Do any additional setup after loading the view.
         microphoneButton.isEnabled = false  //2
         
